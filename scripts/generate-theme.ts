@@ -5,15 +5,20 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
-import { brandBaseColors } from '../src/tokens/1-colors'
-import { gray, pink } from '../src/tokens/2-schemes'
-import { fontFamily, fontWeight, fontSize, lineHeight, typeStyles } from '../src/tokens/3-typography'
+import { brandBaseColors } from '../app/design-system/tokens/1-colors'
+import { gray, pink } from '../app/design-system/tokens/2-schemes'
+import { fontFamily, fontWeight, fontSize, lineHeight, typeStyles } from '../app/design-system/tokens/3-typography'
+import { radius } from '../app/design-system/tokens/4-radius'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const outPath = path.resolve(__dirname, '../src/tokens/theme-generated.css')
+const outPath = path.resolve(__dirname, '../app/design-system/tokens/theme-generated.css')
 
 function toCssVarName(prefix: string, key: string): string {
-  const name = key.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')
+  const name = key
+    .replace('.', '-') // ensure numeric keys like 3.5 become 3-5 for valid CSS vars
+    .replace(/([A-Z])/g, '-$1')
+    .toLowerCase()
+    .replace(/^-/, '')
   return `--${prefix}-${name}`.replace(/--+/g, '--')
 }
 
@@ -111,6 +116,9 @@ const themeVars = [
       Object.entries(lineHeight).map(([key, value]) => [key, String(value)])
     ) as Record<string, string>
   ),
+  '',
+  `  /* Radius scale */`,
+  emitVars('radius', radius as Record<string, string>),
   '',
   `  /* Typography styles */`,
   emitTypeStyles('type', typeStyles),

@@ -1,0 +1,85 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    box-sizing: border-box;
+    text-decoration: none;
+  
+    /* ADD these two — required for the bubble to work */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button__text {
+    padding-inline: 4px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  
+    /* ADD this — keeps text above the bubble */
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  /* button-small */
+  .button-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+    font-family: var(--type-body-default-b2-font-family);
+    font-weight: var(--type-body-default-b2-font-weight);
+    font-size: var(--type-body-default-b2-font-size);
+    line-height: var(--type-body-default-b2-line-height);
+  }
+  
+  .button-small-default__label {
+    /* Inherit typography from the button so there's one source of truth. */
+    font: inherit;
+  }
+  
+  .button-small-default__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.button-small-default__icon svg {
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  stroke: currentColor;
+}
+  
+  /* --- Bubble fill mechanic --- */
+  .button__bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--color-pink-500); /* swap to whatever your fill color should be */
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.42s ease;
+  }
+  
+  .button--hovered .button__bubble {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  .button--hovered {
+    color: var(--color-white); /* text color when filled — adjust to your needs */
+  }
