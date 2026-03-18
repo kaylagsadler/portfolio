@@ -1,0 +1,356 @@
+/* Generated from design tokens - DO NOT EDIT BY HAND; run npm run generate-theme */
+
+@theme inline {
+  /* Gray scale */
+  --color-gray-900: #0D0D0D;
+  --color-gray-800: #2E2E2E;
+  --color-gray-700: #3A3A3A;
+  --color-gray-600: #525252;
+  --color-gray-500: #6B6B6B;
+  --color-gray-400: #878787;
+  --color-gray-300: #ADADAD;
+  --color-gray-200: #C8C8C8;
+  --color-gray-100: #E0E0E0;
+  --color-gray-050: #EFEFEF;
+  --color-gray-010: #F7F7F7;
+  --color-gray-001: #FDFCFC;
+  /* Pink scale */
+  --color-pink-900: #530025;
+  --color-pink-800: #BF0040;
+  --color-pink-700: #C2005A;
+  --color-pink-600: #E8006A;
+  --color-pink-500: #FF2D78;
+  --color-pink-400: #FF4F8A;
+  --color-pink-300: #FF80AB;
+  --color-pink-200: #FFAAC8;
+  --color-pink-100: #FFC0DE;
+  --color-pink-050: #FFDAEB;
+  --color-pink-010: #FFECF3;
+  --color-pink-001: #FFF6F9;
+  /* Named color aliases */
+  --color-white: #FFFFFF;
+  /* Typography base tokens */
+  --font-family-primary: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+  --font-size-1: 0.625rem;
+  --font-size-2: 0.6875rem;
+  --font-size-3: 0.8125rem;
+  --font-size-4: 1rem;
+  --font-size-5: 1.25rem;
+  --font-size-6: 2rem;
+  --font-size-7: 2.5rem;
+  --font-size-8: 3rem;
+  --font-size-9: 3.5rem;
+  --font-size-3.5: 0.84375rem;
+  --line-height-tight: 0.8;
+  --line-height-small: 1.05;
+  --line-height-normal: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.65;
+  /* Typography styles */
+  --type-display-d1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-display-d1-font-size: 3.5rem;
+  --type-display-d1-font-weight: 800;
+  --type-display-d1-line-height: 1.5;
+  --type-display-d2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-display-d2-font-size: 3.5rem;
+  --type-display-d2-font-weight: 300;
+  --type-display-d2-line-height: 1.5;
+  --type-heading-default-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-default-h4-font-size: 1.25rem;
+  --type-heading-default-h4-font-weight: 400;
+  --type-heading-default-h4-line-height: 1.25;
+  --type-heading-strong-h1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h1-font-size: 3rem;
+  --type-heading-strong-h1-font-weight: 700;
+  --type-heading-strong-h1-line-height: 1.05;
+  --type-heading-strong-h2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h2-font-size: 2.5rem;
+  --type-heading-strong-h2-font-weight: 700;
+  --type-heading-strong-h2-line-height: 1.25;
+  --type-heading-strong-h3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h3-font-size: 2rem;
+  --type-heading-strong-h3-font-weight: 600;
+  --type-heading-strong-h3-line-height: 1.25;
+  --type-heading-strong-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h4-font-size: 1.25rem;
+  --type-heading-strong-h4-font-weight: 600;
+  --type-heading-strong-h4-line-height: 1.25;
+  --type-body-default-b1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b1-font-size: 1rem;
+  --type-body-default-b1-font-weight: 400;
+  --type-body-default-b1-line-height: 1.65;
+  --type-body-default-b2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b2-font-size: 0.84375rem;
+  --type-body-default-b2-font-weight: 400;
+  --type-body-default-b2-line-height: 1.65;
+  --type-body-default-b3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b3-font-size: 0.6875rem;
+  --type-body-default-b3-font-weight: 400;
+  --type-body-default-b3-line-height: 1.65;
+  --type-body-strong-b1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b1-font-size: 1rem;
+  --type-body-strong-b1-font-weight: 500;
+  --type-body-strong-b1-line-height: 1.65;
+  --type-body-strong-b2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b2-font-size: 0.84375rem;
+  --type-body-strong-b2-font-weight: 500;
+  --type-body-strong-b2-line-height: 1.65;
+  --type-body-strong-b3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b3-font-size: 0.6875rem;
+  --type-body-strong-b3-font-weight: 500;
+  --type-body-strong-b3-line-height: 1.65;
+  --type-mono-m1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m1-font-size: 0.8125rem;
+  --type-mono-m1-font-weight: 500;
+  --type-mono-m1-line-height: 0.8;
+  --type-mono-m2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m2-font-size: 0.6875rem;
+  --type-mono-m2-font-weight: 500;
+  --type-mono-m2-line-height: 0.8;
+  --type-mono-m3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m3-font-size: 0.625rem;
+  --type-mono-m3-font-weight: 500;
+  --type-mono-m3-line-height: 0.8;
+}
+
+:root {
+  /* Gray scale */
+  --color-gray-900: #0D0D0D;
+  --color-gray-800: #2E2E2E;
+  --color-gray-700: #3A3A3A;
+  --color-gray-600: #525252;
+  --color-gray-500: #6B6B6B;
+  --color-gray-400: #878787;
+  --color-gray-300: #ADADAD;
+  --color-gray-200: #C8C8C8;
+  --color-gray-100: #E0E0E0;
+  --color-gray-050: #EFEFEF;
+  --color-gray-010: #F7F7F7;
+  --color-gray-001: #FDFCFC;
+  /* Pink scale */
+  --color-pink-900: #530025;
+  --color-pink-800: #BF0040;
+  --color-pink-700: #C2005A;
+  --color-pink-600: #E8006A;
+  --color-pink-500: #FF2D78;
+  --color-pink-400: #FF4F8A;
+  --color-pink-300: #FF80AB;
+  --color-pink-200: #FFAAC8;
+  --color-pink-100: #FFC0DE;
+  --color-pink-050: #FFDAEB;
+  --color-pink-010: #FFECF3;
+  --color-pink-001: #FFF6F9;
+  /* Named color aliases */
+  --color-white: #FFFFFF;
+  /* Typography base tokens */
+  --font-family-primary: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+  --font-size-1: 0.625rem;
+  --font-size-2: 0.6875rem;
+  --font-size-3: 0.8125rem;
+  --font-size-4: 1rem;
+  --font-size-5: 1.25rem;
+  --font-size-6: 2rem;
+  --font-size-7: 2.5rem;
+  --font-size-8: 3rem;
+  --font-size-9: 3.5rem;
+  --font-size-3.5: 0.84375rem;
+  --line-height-tight: 0.8;
+  --line-height-small: 1.05;
+  --line-height-normal: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.65;
+  /* Typography styles */
+  --type-display-d1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-display-d1-font-size: 3.5rem;
+  --type-display-d1-font-weight: 800;
+  --type-display-d1-line-height: 1.5;
+  --type-display-d2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-display-d2-font-size: 3.5rem;
+  --type-display-d2-font-weight: 300;
+  --type-display-d2-line-height: 1.5;
+  --type-heading-default-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-default-h4-font-size: 1.25rem;
+  --type-heading-default-h4-font-weight: 400;
+  --type-heading-default-h4-line-height: 1.25;
+  --type-heading-strong-h1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h1-font-size: 3rem;
+  --type-heading-strong-h1-font-weight: 700;
+  --type-heading-strong-h1-line-height: 1.05;
+  --type-heading-strong-h2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h2-font-size: 2.5rem;
+  --type-heading-strong-h2-font-weight: 700;
+  --type-heading-strong-h2-line-height: 1.25;
+  --type-heading-strong-h3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h3-font-size: 2rem;
+  --type-heading-strong-h3-font-weight: 600;
+  --type-heading-strong-h3-line-height: 1.25;
+  --type-heading-strong-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-heading-strong-h4-font-size: 1.25rem;
+  --type-heading-strong-h4-font-weight: 600;
+  --type-heading-strong-h4-line-height: 1.25;
+  --type-body-default-b1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b1-font-size: 1rem;
+  --type-body-default-b1-font-weight: 400;
+  --type-body-default-b1-line-height: 1.65;
+  --type-body-default-b2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b2-font-size: 0.84375rem;
+  --type-body-default-b2-font-weight: 400;
+  --type-body-default-b2-line-height: 1.65;
+  --type-body-default-b3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-default-b3-font-size: 0.6875rem;
+  --type-body-default-b3-font-weight: 400;
+  --type-body-default-b3-line-height: 1.65;
+  --type-body-strong-b1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b1-font-size: 1rem;
+  --type-body-strong-b1-font-weight: 500;
+  --type-body-strong-b1-line-height: 1.65;
+  --type-body-strong-b2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b2-font-size: 0.84375rem;
+  --type-body-strong-b2-font-weight: 500;
+  --type-body-strong-b2-line-height: 1.65;
+  --type-body-strong-b3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-body-strong-b3-font-size: 0.6875rem;
+  --type-body-strong-b3-font-weight: 500;
+  --type-body-strong-b3-line-height: 1.65;
+  --type-mono-m1-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m1-font-size: 0.8125rem;
+  --type-mono-m1-font-weight: 500;
+  --type-mono-m1-line-height: 0.8;
+  --type-mono-m2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m2-font-size: 0.6875rem;
+  --type-mono-m2-font-weight: 500;
+  --type-mono-m2-line-height: 0.8;
+  --type-mono-m3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
+  --type-mono-m3-font-size: 0.625rem;
+  --type-mono-m3-font-weight: 500;
+  --type-mono-m3-line-height: 0.8;
+}
+
+/* Typography utility classes */
+.font-display-d1 {
+  font-family: var(--type-display-d1-font-family);
+  font-size: var(--type-display-d1-font-size);
+  font-weight: var(--type-display-d1-font-weight);
+  line-height: var(--type-display-d1-line-height);
+}
+
+.font-display-d2 {
+  font-family: var(--type-display-d2-font-family);
+  font-size: var(--type-display-d2-font-size);
+  font-weight: var(--type-display-d2-font-weight);
+  line-height: var(--type-display-d2-line-height);
+}
+
+.font-heading-default-h4 {
+  font-family: var(--type-heading-default-h4-font-family);
+  font-size: var(--type-heading-default-h4-font-size);
+  font-weight: var(--type-heading-default-h4-font-weight);
+  line-height: var(--type-heading-default-h4-line-height);
+}
+
+.font-heading-strong-h1 {
+  font-family: var(--type-heading-strong-h1-font-family);
+  font-size: var(--type-heading-strong-h1-font-size);
+  font-weight: var(--type-heading-strong-h1-font-weight);
+  line-height: var(--type-heading-strong-h1-line-height);
+}
+
+.font-heading-strong-h2 {
+  font-family: var(--type-heading-strong-h2-font-family);
+  font-size: var(--type-heading-strong-h2-font-size);
+  font-weight: var(--type-heading-strong-h2-font-weight);
+  line-height: var(--type-heading-strong-h2-line-height);
+}
+
+.font-heading-strong-h3 {
+  font-family: var(--type-heading-strong-h3-font-family);
+  font-size: var(--type-heading-strong-h3-font-size);
+  font-weight: var(--type-heading-strong-h3-font-weight);
+  line-height: var(--type-heading-strong-h3-line-height);
+}
+
+.font-heading-strong-h4 {
+  font-family: var(--type-heading-strong-h4-font-family);
+  font-size: var(--type-heading-strong-h4-font-size);
+  font-weight: var(--type-heading-strong-h4-font-weight);
+  line-height: var(--type-heading-strong-h4-line-height);
+}
+
+.font-body-default-b1 {
+  font-family: var(--type-body-default-b1-font-family);
+  font-size: var(--type-body-default-b1-font-size);
+  font-weight: var(--type-body-default-b1-font-weight);
+  line-height: var(--type-body-default-b1-line-height);
+}
+
+.font-body-default-b2 {
+  font-family: var(--type-body-default-b2-font-family);
+  font-size: var(--type-body-default-b2-font-size);
+  font-weight: var(--type-body-default-b2-font-weight);
+  line-height: var(--type-body-default-b2-line-height);
+}
+
+.font-body-default-b3 {
+  font-family: var(--type-body-default-b3-font-family);
+  font-size: var(--type-body-default-b3-font-size);
+  font-weight: var(--type-body-default-b3-font-weight);
+  line-height: var(--type-body-default-b3-line-height);
+}
+
+.font-body-strong-b1 {
+  font-family: var(--type-body-strong-b1-font-family);
+  font-size: var(--type-body-strong-b1-font-size);
+  font-weight: var(--type-body-strong-b1-font-weight);
+  line-height: var(--type-body-strong-b1-line-height);
+}
+
+.font-body-strong-b2 {
+  font-family: var(--type-body-strong-b2-font-family);
+  font-size: var(--type-body-strong-b2-font-size);
+  font-weight: var(--type-body-strong-b2-font-weight);
+  line-height: var(--type-body-strong-b2-line-height);
+}
+
+.font-body-strong-b3 {
+  font-family: var(--type-body-strong-b3-font-family);
+  font-size: var(--type-body-strong-b3-font-size);
+  font-weight: var(--type-body-strong-b3-font-weight);
+  line-height: var(--type-body-strong-b3-line-height);
+}
+
+.font-mono-m1 {
+  font-family: var(--type-mono-m1-font-family);
+  font-size: var(--type-mono-m1-font-size);
+  font-weight: var(--type-mono-m1-font-weight);
+  line-height: var(--type-mono-m1-line-height);
+}
+
+.font-mono-m2 {
+  font-family: var(--type-mono-m2-font-family);
+  font-size: var(--type-mono-m2-font-size);
+  font-weight: var(--type-mono-m2-font-weight);
+  line-height: var(--type-mono-m2-line-height);
+}
+
+.font-mono-m3 {
+  font-family: var(--type-mono-m3-font-family);
+  font-size: var(--type-mono-m3-font-size);
+  font-weight: var(--type-mono-m3-font-weight);
+  line-height: var(--type-mono-m3-line-height);
+}
