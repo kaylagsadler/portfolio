@@ -36,7 +36,7 @@ export default function Home() {
             </div>
           </div>
           <p className="font-mono-m1 italic text-[var(--color-gray-300)] mt-[22px]">
-            // Kayla Sadler · Product designer &amp; frontend engineer
+            // KAYLA SADLER · PRODUCT DESIGNER &amp; FRONTEND ENGINEER
           </p>
         </div>
 
