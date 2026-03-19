@@ -40,6 +40,7 @@ type TypeStyle = {
     fontSize: string;
     fontWeight: number;
     lineHeight: number;
+    letterSpacing?: string;
 };
 
 type LineHeightKey = keyof typeof lineHeight;
@@ -48,18 +49,20 @@ function typeStyle(
     size: keyof typeof fontSize,
     weight: keyof typeof fontWeight,
     lineHeightKey: LineHeightKey = "relaxed",
+    letterSpacing?: string,
 ): TypeStyle {
     return {
         fontFamily: fontFamily.primary,
         fontSize: fontSize[size],
         fontWeight: fontWeight[weight],
         lineHeight: lineHeight[lineHeightKey],
+        ...(letterSpacing && { letterSpacing }),
     };
 }
 
 export const typeStyles: Record<string, TypeStyle> = {
     "display-d1": typeStyle(10, "extraBold", "relaxed"),
-    "display-d2": typeStyle(10, "light", "relaxed"),
+    "display-d2": typeStyle(10, "regular", "relaxed"),
 
     "heading-default-h4": typeStyle(6, "regular", "normal"),
     "heading-strong-h1": typeStyle(9, "bold", "small"),
@@ -74,8 +77,8 @@ export const typeStyles: Record<string, TypeStyle> = {
     "body-strong-b2": typeStyle(4, "medium", "loose"),
     "body-strong-b3": typeStyle(2, "medium", "loose"),
 
-    "mono-m1": typeStyle(3, "medium", "tight"),
-    "mono-m2": typeStyle(2, "medium", "tight"),
-    "mono-m3": typeStyle(1, "medium", "tight"),
+    "mono-m1": typeStyle(3, "medium", "tight", "0.1em"),
+    "mono-m2": typeStyle(2, "medium", "tight", "0.1em"),
+    "mono-m3": typeStyle(1, "medium", "tight", "0.1em"),
 };
 

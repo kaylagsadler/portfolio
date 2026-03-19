@@ -1,55 +1,52 @@
 'use client';
 
-import Image from "next/image";
 import Button from "./design-system/components/react/Button";
-import { Sparkles } from "lucide-react";
+import Navbar from "./design-system/components/react/Navbar";
+import './design-system/components/tag.css';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs font-heading-strong-h1 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md font-body-default-b1 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex min-h-screen flex-col bg-[var(--color-gray-010)] font-sans">
+      <Navbar />
+
+      <main className="flex w-full max-w-[1440px] mx-auto flex-col gap-16 px-16 py-20">
+        <div className="flex flex-col">
+          <div className="flex flex-col gap-6">
+            <div className="tag self-start">
+              <span className="tag__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12.1" cy="12.1" r="2" fill="var(--color-teal-500)" className="tag__dot" />
+                </svg>
+              </span>
+              <span className="tag__text">Currently building</span>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <h1 className="font-display-d2 text-[var(--color-gray-900)]">
+                Something good is{' '}
+                <span className="text-[var(--color-teal-500)]">on its way</span>
+              </h1>
+              <p className="font-heading-default-h4 text-[var(--color-gray-400)] max-w-[699px]">
+                My portfolio is in progress. I&#39;m a product designer who writes her own code, and I&#39;m building this from scratch with React and Next.js.
+              </p>
+              <p className="font-heading-default-h4 text-[var(--color-gray-900)] max-w-[699px]">
+                Feel free to poke around while it takes shape.{' '}
+                <span className="text-[var(--color-gray-400)]">Full case studies dropping soon.</span>
+              </p>
+            </div>
+          </div>
+          <p className="font-mono-m1 italic text-[var(--color-gray-300)] mt-[22px]">
+            // Kayla Sadler · Product designer &amp; frontend engineer
           </p>
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-          <Button iconRight={<Sparkles />}>
-            Hello. A test.
+
+        <div className="flex items-center gap-6">
+          <Button size="large" variant="primary">
+            View recent work || coming soon
           </Button>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <Button size="large" variant="secondary">
+            Get in touch
+          </Button>
         </div>
       </main>
     </div>

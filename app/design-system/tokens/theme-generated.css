@@ -14,6 +14,19 @@
   --color-gray-050: #EFEFEF;
   --color-gray-010: #F7F7F7;
   --color-gray-001: #FDFCFC;
+  /* Teal scale */
+  --color-teal-900: #021E25;
+  --color-teal-800: #043540;
+  --color-teal-700: #064A57;
+  --color-teal-600: #0A5E6E;
+  --color-teal-500: #0E7485;
+  --color-teal-400: #1A8FA4;
+  --color-teal-300: #1AAABB;
+  --color-teal-200: #3DC4D8;
+  --color-teal-100: #76DAEA;
+  --color-teal-050: #B2F0F8;
+  --color-teal-010: #DAFAFF;
+  --color-teal-001: #F0FEFF;
   /* Pink scale */
   --color-pink-900: #530025;
   --color-pink-800: #BF0040;
@@ -69,7 +82,7 @@
   --type-display-d1-line-height: 1.5;
   --type-display-d2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-display-d2-font-size: 3.5rem;
-  --type-display-d2-font-weight: 300;
+  --type-display-d2-font-weight: 400;
   --type-display-d2-line-height: 1.5;
   --type-heading-default-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-heading-default-h4-font-size: 1.25rem;
@@ -119,14 +132,17 @@
   --type-mono-m1-font-size: 0.8125rem;
   --type-mono-m1-font-weight: 500;
   --type-mono-m1-line-height: 0.8;
+  --type-mono-m1-letter-spacing: 0.1em;
   --type-mono-m2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-mono-m2-font-size: 0.6875rem;
   --type-mono-m2-font-weight: 500;
   --type-mono-m2-line-height: 0.8;
+  --type-mono-m2-letter-spacing: 0.1em;
   --type-mono-m3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-mono-m3-font-size: 0.625rem;
   --type-mono-m3-font-weight: 500;
   --type-mono-m3-line-height: 0.8;
+  --type-mono-m3-letter-spacing: 0.1em;
 }
 
 :root {
@@ -143,6 +159,19 @@
   --color-gray-050: #EFEFEF;
   --color-gray-010: #F7F7F7;
   --color-gray-001: #FDFCFC;
+  /* Teal scale */
+  --color-teal-900: #021E25;
+  --color-teal-800: #043540;
+  --color-teal-700: #064A57;
+  --color-teal-600: #0A5E6E;
+  --color-teal-500: #0E7485;
+  --color-teal-400: #1A8FA4;
+  --color-teal-300: #1AAABB;
+  --color-teal-200: #3DC4D8;
+  --color-teal-100: #76DAEA;
+  --color-teal-050: #B2F0F8;
+  --color-teal-010: #DAFAFF;
+  --color-teal-001: #F0FEFF;
   /* Pink scale */
   --color-pink-900: #530025;
   --color-pink-800: #BF0040;
@@ -198,7 +227,7 @@
   --type-display-d1-line-height: 1.5;
   --type-display-d2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-display-d2-font-size: 3.5rem;
-  --type-display-d2-font-weight: 300;
+  --type-display-d2-font-weight: 400;
   --type-display-d2-line-height: 1.5;
   --type-heading-default-h4-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-heading-default-h4-font-size: 1.25rem;
@@ -248,14 +277,17 @@
   --type-mono-m1-font-size: 0.8125rem;
   --type-mono-m1-font-weight: 500;
   --type-mono-m1-line-height: 0.8;
+  --type-mono-m1-letter-spacing: 0.1em;
   --type-mono-m2-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-mono-m2-font-size: 0.6875rem;
   --type-mono-m2-font-weight: 500;
   --type-mono-m2-line-height: 0.8;
+  --type-mono-m2-letter-spacing: 0.1em;
   --type-mono-m3-font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica', Arial, sans-serif;
   --type-mono-m3-font-size: 0.625rem;
   --type-mono-m3-font-weight: 500;
   --type-mono-m3-line-height: 0.8;
+  --type-mono-m3-letter-spacing: 0.1em;
 }
 
 /* Typography utility classes */
@@ -355,6 +387,7 @@
   font-size: var(--type-mono-m1-font-size);
   font-weight: var(--type-mono-m1-font-weight);
   line-height: var(--type-mono-m1-line-height);
+  letter-spacing: var(--type-mono-m1-letter-spacing);
 }
 
 .font-mono-m2 {
@@ -362,6 +395,7 @@
   font-size: var(--type-mono-m2-font-size);
   font-weight: var(--type-mono-m2-font-weight);
   line-height: var(--type-mono-m2-line-height);
+  letter-spacing: var(--type-mono-m2-letter-spacing);
 }
 
 .font-mono-m3 {
@@ -369,4 +403,5 @@
   font-size: var(--type-mono-m3-font-size);
   font-weight: var(--type-mono-m3-font-weight);
   line-height: var(--type-mono-m3-line-height);
+  letter-spacing: var(--type-mono-m3-letter-spacing);
 }

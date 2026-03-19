@@ -20,10 +20,19 @@
   unicode-range: U+0000-007F;
 }
 
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin.woff2") format("woff2");
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Keep background white per design request. */
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 

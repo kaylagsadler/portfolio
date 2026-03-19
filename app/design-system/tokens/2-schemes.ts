@@ -15,6 +15,21 @@ export const gray = {
   '001': '#FDFCFC',
 } as const
 
+export const teal = {
+  '900': '#021E25',
+  '800': '#043540',
+  '700': '#064A57',
+  '600': '#0A5E6E',
+  '500': brandBaseColors.teal,
+  '400': '#1A8FA4',
+  '300': '#1AAABB',
+  '200': '#3DC4D8',
+  '100': '#76DAEA',
+  '050': '#B2F0F8',
+  '010': '#DAFAFF',
+  '001': '#F0FEFF',
+} as const
+
 export const pink = {
   '900': '#530025',
   '800': '#BF0040',

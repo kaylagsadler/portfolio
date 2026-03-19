@@ -8,9 +8,11 @@ interface ButtonProps {
   iconRight?: React.ReactNode
   onClick?: () => void
   className?: string
+  size?: 'small' | 'large'
+  variant?: 'primary' | 'secondary'
 }
 
-export default function Button({ children, iconRight, onClick, className }: ButtonProps) {
+export default function Button({ children, iconRight, onClick, className, size = 'small', variant = 'primary' }: ButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null)
   const bubbleRef = useRef<HTMLSpanElement>(null)
   const [hovered, setHovered] = useState<boolean>(false)
@@ -48,20 +50,22 @@ export default function Button({ children, iconRight, onClick, className }: Butt
     setHovered(false)
   }
 
+  const hasBubble = variant === 'primary'
+
   return (
     <button
       ref={btnRef}
-      className={`button button-small ${hovered ? 'button--hovered' : ''} ${className ?? ''}`}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      className={`button button-${variant} button-${size} ${hasBubble && hovered ? 'button--hovered' : ''} ${className ?? ''}`}
+      onMouseEnter={hasBubble ? handleEnter : undefined}
+      onMouseLeave={hasBubble ? handleLeave : undefined}
       onClick={onClick}
     >
-      <span ref={bubbleRef} className="button__bubble" />
-      <span className="button__text button-small-default__label">
+      {hasBubble && <span ref={bubbleRef} className="button__bubble" />}
+      <span className={`button__text button-${size}-default__label`}>
         {children}
       </span>
       {iconRight && (
-        <span className="button-small-default__icon">
+        <span className={`button-${size}-default__icon`}>
           {iconRight}
         </span>
       )}

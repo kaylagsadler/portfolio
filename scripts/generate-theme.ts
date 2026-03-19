@@ -6,7 +6,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
 import { brandBaseColors } from '../app/design-system/tokens/1-colors'
-import { gray, pink } from '../app/design-system/tokens/2-schemes'
+import { gray, teal, pink } from '../app/design-system/tokens/2-schemes'
 import { fontFamily, fontWeight, fontSize, lineHeight, typeStyles } from '../app/design-system/tokens/3-typography'
 import { radius } from '../app/design-system/tokens/4-radius'
 
@@ -61,18 +61,23 @@ function emitTypeStyles(
       fontSize: string
       fontWeight: number
       lineHeight: number
+      letterSpacing?: string
     }
   >
 ): string {
   return Object.entries(styles)
     .map(([name, style]) => {
       const base = toCssVarName(prefix, name) // e.g. --type-display-d1
-      return [
+      const lines = [
         `  ${base}-font-family: ${style.fontFamily};`,
         `  ${base}-font-size: ${style.fontSize};`,
         `  ${base}-font-weight: ${style.fontWeight};`,
         `  ${base}-line-height: ${style.lineHeight};`,
-      ].join('\n')
+      ]
+      if (style.letterSpacing) {
+        lines.push(`  ${base}-letter-spacing: ${style.letterSpacing};`)
+      }
+      return lines.join('\n')
     })
     .join('\n')
 }
@@ -84,6 +89,16 @@ const themeVars = [
     gray as Record<string, string>,
     {
       '900': brandBaseColors.black,
+    },
+    scaleOrder
+  ),
+  '',
+  `  /* Teal scale */`,
+  emitVars(
+    'color-teal',
+    teal as Record<string, string>,
+    {
+      '500': brandBaseColors.teal,
     },
     scaleOrder
   ),
@@ -134,6 +149,7 @@ function emitTypeUtilityClasses(
       fontSize: string
       fontWeight: number
       lineHeight: number
+      letterSpacing?: string
     }
   >
 ): string {
@@ -141,14 +157,18 @@ function emitTypeUtilityClasses(
     .map((name) => {
       const className = `.font-${name}` // e.g. .font-display-d1
       const baseVar = `--type-${name}`
-      return [
+      const lines = [
         `${className} {`,
         `  font-family: var(${baseVar}-font-family);`,
         `  font-size: var(${baseVar}-font-size);`,
         `  font-weight: var(${baseVar}-font-weight);`,
         `  line-height: var(${baseVar}-line-height);`,
-        `}`,
-      ].join('\n')
+      ]
+      if (styles[name].letterSpacing) {
+        lines.push(`  letter-spacing: var(${baseVar}-letter-spacing);`)
+      }
+      lines.push(`}`)
+      return lines.join('\n')
     })
     .join('\n\n')
 }
