@@ -50,9 +50,10 @@ function typeStyle(
     weight: keyof typeof fontWeight,
     lineHeightKey: LineHeightKey = "relaxed",
     letterSpacing?: string,
+    family: keyof typeof fontFamily = "primary",
 ): TypeStyle {
     return {
-        fontFamily: fontFamily.primary,
+        fontFamily: fontFamily[family],
         fontSize: fontSize[size],
         fontWeight: fontWeight[weight],
         lineHeight: lineHeight[lineHeightKey],
@@ -77,8 +78,8 @@ export const typeStyles: Record<string, TypeStyle> = {
     "body-strong-b2": typeStyle(4, "medium", "loose"),
     "body-strong-b3": typeStyle(2, "medium", "loose"),
 
-    "mono-m1": typeStyle(3, "medium", "tight", "0.1em"),
-    "mono-m2": typeStyle(2, "medium", "tight", "0.1em"),
-    "mono-m3": typeStyle(1, "medium", "tight", "0.1em"),
+    "mono-m1": typeStyle(3, "medium", "tight", "0.1em", "mono"),
+    "mono-m2": typeStyle(2, "medium", "tight", "0.1em", "mono"),
+    "mono-m3": typeStyle(1, "medium", "tight", "0.1em", "mono"),
 };
 
