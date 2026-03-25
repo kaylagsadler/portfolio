@@ -1,0 +1,189 @@
+/**
+ * Theme generator: reads design tokens and writes theme-generated.css
+ * Run: npm run generate-theme
+ */
+import * as fs from 'fs'
+import * as path from 'path'
+import { fileURLToPath } from 'url'
+import { globalColors } from '../src/design-system/tokens/4-global-colors'
+import { componentColors } from '../src/design-system/tokens/5-component-colors'
+import { radius } from '../src/design-system/tokens/6-radius'
+import {
+  fontFamily,
+  fontWeight,
+  fontSize,
+  lineHeight,
+  typeStyles,
+} from '../src/design-system/tokens/7-typography'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const outPath = path.resolve(__dirname, '../src/design-system/theme-generated.css')
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function flattenToVars(
+  obj: Record<string, unknown>,
+  prefix: string
+): Array<[string, string]> {
+  const entries: Array<[string, string]> = []
+  for (const [key, value] of Object.entries(obj)) {
+    const name = prefix ? `${prefix}-${key}` : key
+    if (value === null || value === undefined) continue
+    if (isPlainObject(value)) {
+      entries.push(...flattenToVars(value as Record<string, unknown>, name))
+    } else {
+      const cssValue = String(value)
+      if (cssValue) entries.push([name, cssValue])
+    }
+  }
+  return entries
+}
+
+function toCssVarName(prefix: string, key: string): string {
+  const name = key.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')
+  return `--${prefix}-${name}`.replace(/--+/g, '--')
+}
+
+function emitRootVars(prefix: string, obj: Record<string, unknown>): string {
+  const entries = flattenToVars(obj, '')
+  return entries
+    .map(([k, v]) => {
+      const varName = toCssVarName(prefix, k)
+      const value = typeof v === 'number' ? String(v) : v
+      return `  ${varName}: ${value};`
+    })
+    .join('\n')
+}
+
+// Build theme-agnostic tokens (radius, typography)
+const radiusVars = emitRootVars('radius', radius as unknown as Record<string, unknown>)
+const fontFamilyVars = Object.entries(fontFamily)
+  .map(([k, v]) => `  --font-family-${k.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${v};`)
+  .join('\n')
+const fontWeightVars = Object.entries(fontWeight)
+  .map(([k, v]) => `  --font-weight-${k}: ${v};`)
+  .join('\n')
+const fontSizeVars = Object.entries(fontSize)
+  .map(([k, v]) => `  --font-size-${k}: ${v};`)
+  .join('\n')
+const lineHeightVars = Object.entries(lineHeight)
+  .map(([k, v]) => `  --line-height-${k}: ${v};`)
+  .join('\n')
+
+function typeStyleSlug(styleName: string): string {
+  return styleName.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/\s+/g, '-')
+}
+
+const typeStyleVars: string[] = []
+for (const [styleName, style] of Object.entries(typeStyles)) {
+  const slug = typeStyleSlug(styleName)
+  typeStyleVars.push(`  --type-${slug}-font-family: ${style.fontFamily};`)
+  typeStyleVars.push(`  --type-${slug}-font-size: ${style.fontSize};`)
+  typeStyleVars.push(`  --type-${slug}-font-weight: ${style.fontWeight};`)
+  typeStyleVars.push(`  --type-${slug}-line-height: ${style.lineHeight};`)
+}
+
+// Typography utility classes (one per type style) — use theme type tokens
+const typographyUtilityClasses = Object.keys(typeStyles)
+  .map((styleName) => {
+    const slug = typeStyleSlug(styleName)
+    return [
+      `.font-${slug} {`,
+      `  font-family: var(--type-${slug}-font-family);`,
+      `  font-size: var(--type-${slug}-font-size);`,
+      `  font-weight: var(--type-${slug}-font-weight);`,
+      `  line-height: var(--type-${slug}-line-height);`,
+      `}`,
+    ].join('\n')
+  })
+  .join('\n\n')
+
+function entriesToCssVars(entries: Array<[string, string]>): string {
+  return entries
+    .map(([k, v]) => {
+      const varName = '--' + k.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')
+      return `  ${varName}: ${v};`
+    })
+    .join('\n')
+}
+
+// Dark theme: global + component colors
+const darkGlobalEntries = flattenToVars(
+  globalColors.dark as unknown as Record<string, unknown>,
+  'color'
+)
+const darkComponentEntries = flattenToVars(
+  componentColors.dark as unknown as Record<string, unknown>,
+  'color'
+)
+const darkGlobalVars = entriesToCssVars(darkGlobalEntries)
+const darkComponentVars = entriesToCssVars(darkComponentEntries)
+
+// Light theme: global + component colors
+const lightGlobalEntries = flattenToVars(
+  globalColors.light as unknown as Record<string, unknown>,
+  'color'
+)
+const lightComponentEntries = flattenToVars(
+  componentColors.light as unknown as Record<string, unknown>,
+  'color'
+)
+const lightGlobalVars = entriesToCssVars(lightGlobalEntries)
+const lightComponentVars = entriesToCssVars(lightComponentEntries)
+
+// @theme inline: theme-agnostic tokens only (Tailwind v4)
+const themeContent = [
+  '/* Design tokens: theme-agnostic */',
+  radiusVars,
+  fontFamilyVars,
+  fontWeightVars,
+  fontSizeVars,
+  lineHeightVars,
+  typeStyleVars.join('\n'),
+]
+  .filter(Boolean)
+  .join('\n')
+
+// :root = dark theme (default); [data-theme="light"] = light theme override
+const rootDarkBlock = [
+  '/* Semantic colors (dark theme default) */',
+  darkGlobalVars,
+  '/* Component colors (dark) */',
+  darkComponentVars,
+]
+  .filter(Boolean)
+  .join('\n')
+
+const lightThemeBlock = [
+  '/* Semantic colors (light theme) */',
+  lightGlobalVars,
+  '/* Component colors (light) */',
+  lightComponentVars,
+]
+  .filter(Boolean)
+  .join('\n')
+
+const css = `/* Generated from design tokens — DO NOT EDIT BY HAND; run npm run generate-theme */
+
+@theme inline {
+${themeContent}
+}
+
+:root {
+${rootDarkBlock}
+}
+
+[data-theme="light"] {
+${lightThemeBlock}
+}
+
+@layer components {
+/* Typography utility classes — use theme type tokens */
+${typographyUtilityClasses}
+}
+`
+
+fs.writeFileSync(outPath, css, 'utf8')
+console.log('Wrote', outPath)

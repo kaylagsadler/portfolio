@@ -1,0 +1,38 @@
+.logoMark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    background-color: transparent;
+  }
+  
+  /* ── intro: stroke draws clockwise ── */
+  @keyframes strokeDraw {
+    0%         { stroke-dashoffset: 108; opacity: 1; }
+    55%        { stroke-dashoffset: 0;   opacity: 1; }
+    70%        { stroke-dashoffset: 0;   opacity: 0; }
+    100%       { stroke-dashoffset: 0;   opacity: 0; }
+  }
+  
+  @keyframes fillAppear {
+    0%         { opacity: 0; transform: scale(1); }
+    40%        { opacity: 1; transform: scale(1.2); }
+    70%        { opacity: 1; transform: scale(0.97); }
+    100%       { opacity: 1; transform: scale(1); }
+  }
+  
+  .introStroke {
+    stroke-dasharray: 108;
+    animation: strokeDraw 2.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .introFill {
+    animation: fillAppear 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1.25s forwards;
+    transform-origin: center;
+    transform-box: fill-box;
+    opacity: 0;
+  }

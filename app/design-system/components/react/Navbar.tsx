@@ -4,21 +4,16 @@ import { ArrowDownToLine, ArrowUpRight } from 'lucide-react'
 import Button from './Button'
 
 import '../navbar.css'
-import '../logo.css'
 import '../nav-link.css'
 import '../tooltip.css'
+import LogoMark from './LogoMark'
 
 export default function Navbar() {
   return (
     <div className="navbar-wrapper">
       <header className="navbar navbar-reveal">
-        <a className="logo" href="/" aria-label="k-s design home">
-          <span className="logo__letters">
-            <span className="logo__k">k</span>
-            <span className="logo__dash">-</span>
-            <span className="logo__s">s</span>
-          </span>
-          <span className="logo__suffix">. design</span>
+        <a href="/" aria-label="k-s design home">
+          <LogoMark />
         </a>
 
         <div className="navbar__right">
@@ -36,7 +31,7 @@ export default function Navbar() {
                 <span className="nav-link__label">Resume</span>
               </a>
               <span className="tooltip tooltip--caret-top" role="tooltip">
-                <span className="tooltip__text">Downloads as a PDF</span>
+                <span className="tooltip__text">DOWNLOADS AS A PDF</span>
                 <span className="tooltip__icon">
                   <ArrowDownToLine size={12} />
                 </span>
