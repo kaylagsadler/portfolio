@@ -167,10 +167,11 @@ const SEQUENCE: Effect[] = [
   },
 ]
 
-export default function LogoMark() {
+export default function LogoMark({ visible }: { visible?: boolean }) {
   const layerRef   = useRef<SVGGElement>(null)
   const styleRef   = useRef<HTMLStyleElement | null>(null)
   const idxRef     = useRef(0)
+  const [started, setStarted] = useState(false)
   const [ready, setReady] = useState(false)
 
   // inject / clear dynamic keyframe styles
@@ -194,11 +195,15 @@ export default function LogoMark() {
     layerRef.current.appendChild(p)
   }
 
-  // after intro animation finishes (~3s), enable hover
   useEffect(() => {
+    if (visible && !started) setStarted(true)
+  }, [visible, started])
+
+  useEffect(() => {
+    if (!started) return
     const t = setTimeout(() => setReady(true), 2000)
     return () => clearTimeout(t)
-  }, [])
+  }, [started])
 
   useEffect(() => {
     if (ready) drawResting()
@@ -233,7 +238,7 @@ export default function LogoMark() {
         aria-hidden="true"
       >
         {/* intro: fill fades in after stroke draws */}
-        {!ready && (
+        {started && !ready && (
           <>
             <path
               className={styles.introFill}

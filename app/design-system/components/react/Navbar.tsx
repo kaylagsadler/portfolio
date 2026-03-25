@@ -8,12 +8,12 @@ import '../nav-link.css'
 import '../tooltip.css'
 import LogoMark from './LogoMark'
 
-export default function Navbar() {
+export default function Navbar({ visible }: { visible?: boolean }) {
   return (
     <div className="navbar-wrapper">
-      <header className="navbar navbar-reveal">
+      <header className={`navbar ${visible ? 'navbar-reveal' : 'opacity-0'}`}>
         <a href="/" aria-label="k-s design home">
-          <LogoMark />
+          <LogoMark visible={visible} />
         </a>
 
         <div className="navbar__right">
