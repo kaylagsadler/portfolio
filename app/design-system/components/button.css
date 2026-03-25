@@ -1,75 +1,75 @@
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    border-radius: var(--radius-xs);
-    cursor: pointer;
-    box-sizing: border-box;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 
-    font-family: var(--type-body-default-b2-font-family);
-    font-weight: var(--type-body-default-b2-font-weight);
-    font-size: var(--type-body-default-b2-font-size);
-    line-height: var(--type-body-default-b2-line-height);
-  }
+  font-family: var(--type-body-default-b2-font-family);
+  font-weight: var(--type-body-default-b2-font-weight);
+  font-size: var(--type-body-default-b2-font-size);
+  line-height: var(--type-body-default-b2-line-height);
+}
 
-  /* Variant: primary */
-  .button-primary {
-    background-color: var(--color-gray-900);
-    color: var(--color-gray-010);
-  }
+/* Variant: primary */
+.button-primary {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-010);
+}
 
-  /* Variant: secondary */
-  .button-secondary {
-    background-color: transparent;
-    border: 1px solid var(--color-gray-200);
-    color: var(--color-gray-400);
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-  }
+/* Variant: secondary */
+.button-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-gray-200);
+  color: var(--color-gray-400);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
 
-  .button-secondary:hover {
-    background-color: var(--color-gray-100);
-    border-color: transparent;
-    color: var(--color-gray-900);
-  }
-  
-  .button__text {
-    padding-inline: 4px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-  
-    /* ADD this — keeps text above the bubble */
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-  }
-  
-  /* button-small */
-  .button-small {
-    padding: 8px 12px;
-  }
+.button-secondary:hover {
+  background-color: var(--color-gray-100);
+  border-color: transparent;
+  color: var(--color-gray-700);
+}
 
-  /* button-large */
-  .button-large {
-    height: 44px;
-    padding: 8px 12px;
-  }
+.button__text {
+  padding-inline: 4px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  /* keeps text above the bubble */
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* button-small */
+.button-small {
+  padding: 8px 12px;
+}
+
+/* button-large */
+.button-large {
+  height: 44px;
+  padding: 8px 12px;
+}
 
 .button-small-default__label,
 .button-large-default__label {
-    /* Inherit typography from the button so there's one source of truth. */
-    font: inherit;
-  }
-  
-  .button-small-default__icon,
+  /* Inherit typography from the button so there's one source of truth. */
+  font: inherit;
+}
+
+.button-small-default__icon,
 .button-large-default__icon {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,25 +85,64 @@
   color: inherit;
   stroke: currentColor;
 }
-  
-  /* --- Bubble fill mechanic --- */
-  .button__bubble {
-    position: absolute;
-    border-radius: 50%;
-    background-color: var(--color-teal-500); /* swap to whatever your fill color should be */
-    pointer-events: none;
-    z-index: 1;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.42s ease;
-  }
-  
-  .button--hovered .button__bubble {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  
-  .button--hovered {
-    color: var(--color-gray-010); /* text color when filled — adjust to your needs */
-  }
+
+/* ---- Bubble fill mechanic ---- */
+.button__bubble {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--color-teal-500); /* swap to whatever your fill color should be */
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.42s ease;
+}
+
+.button--hovered .button__bubble {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.button--hovered {
+  color: var(--color-gray-010); /* text color when filled — adjust to your needs */
+}
+
+/* ---- Icon exit/enter animation ---- */
+.button__icon {
+  overflow: hidden;
+  position: relative;
+}
+
+.button__icon-primary,
+.button__icon-clone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Clone sits SW, out of frame at rest */
+.button__icon-clone {
+  position: absolute;
+  inset: 0;
+  transform: translate(-100%, 100%);
+}
+
+/* ENTER: primary exits NE, clone slides to center */
+.button__icon--hovered .button__icon-primary {
+  transform: translate(100%, -100%);
+}
+.button__icon--hovered .button__icon-clone {
+  transform: translate(0%, 0%);
+}
+
+/* LEAVE: primary returns to center, clone exits SW */
+.button__icon--leaving .button__icon-primary {
+  transform: translate(0%, 0%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button__icon--leaving .button__icon-clone {
+  transform: translate(-100%, 100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

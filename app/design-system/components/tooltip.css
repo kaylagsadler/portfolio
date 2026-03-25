@@ -1,0 +1,124 @@
+.tooltip {
+  --_tooltip-bg: rgba(224, 224, 224, 0.6);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  position: relative;
+  border-radius: var(--radius-xs);
+  background-color: var(--_tooltip-bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: var(--color-gray-700);
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  font-family: var(--type-mono-m3-font-family);
+  font-size: var(--type-mono-m3-font-size);
+  font-weight: var(--type-mono-m3-font-weight);
+  line-height: var(--type-mono-m3-line-height);
+  letter-spacing: var(--type-mono-m3-letter-spacing);
+
+  box-shadow:
+    0px 29px 8px 0px rgba(0, 0, 0, 0),
+    0px 19px 8px 0px rgba(0, 0, 0, 0.01),
+    0px 11px 6px 0px rgba(0, 0, 0, 0.04),
+    0px 5px 5px 0px rgba(0, 0, 0, 0.06),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.tooltip__text {
+  display: flex;
+  align-items: center;
+  padding-inline: 2px;
+}
+
+.tooltip__icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip__icon svg {
+  width: 12px;
+  height: 12px;
+  color: inherit;
+}
+
+/* Caret: top */
+.tooltip--caret-top::before {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 4px solid var(--_tooltip-bg);
+}
+
+/* Caret: bottom */
+.tooltip--caret-bottom::before {
+  bottom: auto;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 4px solid var(--_tooltip-bg);
+}
+
+/* Caret: left */
+.tooltip--caret-left::before {
+  right: 100%;
+  top: 50%;
+  left: auto;
+  transform: translateY(-50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 4px solid var(--_tooltip-bg);
+}
+
+/* Caret: right */
+.tooltip--caret-right::before {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 4px solid var(--_tooltip-bg);
+}
+
+/* Hover-trigger wrapper (e.g. around a nav-link) */
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-trigger .tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip-trigger:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}

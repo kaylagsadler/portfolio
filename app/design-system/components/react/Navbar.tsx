@@ -1,11 +1,12 @@
 'use client'
 
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowDownToLine, ArrowUpRight } from 'lucide-react'
 import Button from './Button'
 
 import '../navbar.css'
 import '../logo.css'
 import '../nav-link.css'
+import '../tooltip.css'
 
 export default function Navbar() {
   return (
@@ -30,9 +31,17 @@ export default function Navbar() {
               <span className="nav-link__label">About</span>
             </a>
 
-            <a className="nav-link" data-text="Resume" href="#resume">
-              <span className="nav-link__label">Resume</span>
-            </a>
+            <span className="tooltip-trigger">
+              <a className="nav-link" data-text="Resume" href="/ResumeKaylaSadler.pdf" download="ResumeKaylaSadler.pdf">
+                <span className="nav-link__label">Resume</span>
+              </a>
+              <span className="tooltip tooltip--caret-top" role="tooltip">
+                <span className="tooltip__text">Downloads as a PDF</span>
+                <span className="tooltip__icon">
+                  <ArrowDownToLine size={12} />
+                </span>
+              </span>
+            </span>
           </nav>
 
           <Button iconRight={<ArrowUpRight size={16} />}>Get in touch</Button>

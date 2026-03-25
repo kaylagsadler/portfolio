@@ -1,4 +1,4 @@
- 'use client'
+'use client'
 
 import { useState, useRef } from 'react'
 import '../button.css'
@@ -13,8 +13,9 @@ interface ButtonProps {
 }
 
 export default function Button({ children, iconRight, onClick, className, size = 'small', variant = 'primary' }: ButtonProps) {
-  const btnRef = useRef<HTMLButtonElement>(null)
+  const btnRef    = useRef<HTMLButtonElement>(null)
   const bubbleRef = useRef<HTMLSpanElement>(null)
+  const iconRef   = useRef<HTMLSpanElement>(null)
   const [hovered, setHovered] = useState<boolean>(false)
 
   function getPos(e: React.MouseEvent) {
@@ -34,13 +35,15 @@ export default function Button({ children, iconRight, onClick, className, size =
   }
 
   function handleEnter(e: React.MouseEvent) {
-    const p = getPos(e)
+    const p    = getPos(e)
     const size = getSize(p.x, p.y)
     bubbleRef.current!.style.width  = size + 'px'
     bubbleRef.current!.style.height = size + 'px'
     bubbleRef.current!.style.left   = p.x + 'px'
     bubbleRef.current!.style.top    = p.y + 'px'
     setHovered(true)
+    iconRef.current?.classList.remove('button__icon--leaving')
+    iconRef.current?.classList.add('button__icon--hovered')
   }
 
   function handleLeave(e: React.MouseEvent) {
@@ -48,6 +51,8 @@ export default function Button({ children, iconRight, onClick, className, size =
     bubbleRef.current!.style.left = p.x + 'px'
     bubbleRef.current!.style.top  = p.y + 'px'
     setHovered(false)
+    iconRef.current?.classList.remove('button__icon--hovered')
+    iconRef.current?.classList.add('button__icon--leaving')
   }
 
   const hasBubble = variant === 'primary'
@@ -65,8 +70,9 @@ export default function Button({ children, iconRight, onClick, className, size =
         {children}
       </span>
       {iconRight && (
-        <span className={`button-${size}-default__icon`}>
-          {iconRight}
+        <span ref={iconRef} className={`button-${size}-default__icon button__icon`}>
+          <span className="button__icon-primary">{iconRight}</span>
+          <span className="button__icon-clone">{iconRight}</span>
         </span>
       )}
     </button>
