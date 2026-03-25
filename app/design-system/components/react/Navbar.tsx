@@ -11,7 +11,7 @@ import '../tooltip.css'
 export default function Navbar() {
   return (
     <div className="navbar-wrapper">
-      <header className="navbar">
+      <header className="navbar navbar-reveal">
         <a className="logo" href="/" aria-label="k-s design home">
           <span className="logo__letters">
             <span className="logo__k">k</span>
